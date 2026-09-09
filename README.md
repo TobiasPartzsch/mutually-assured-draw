@@ -18,3 +18,9 @@ Activate the environment using your shell or editor, then install dependencies a
 
 License
 TBD
+
+ToDo:
+- Board.is_full() tests.
+- A game-state model that tracks the current player and validates turn flow.
+- A terminal/log-friendly board formatter.
+- A Game loop that accepts moves from a player interface.
