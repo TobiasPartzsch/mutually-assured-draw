@@ -1,5 +1,7 @@
+import pytest
+
 from mutually_assured_draw.board import Board
-from mutually_assured_draw.game_types import Cell, Player
+from mutually_assured_draw.game_types import Cell, Mark, Player
 
 
 def test_empty_board_has_no_winner() -> None:
@@ -62,3 +64,33 @@ def test_full_board_draw() -> None:
 
     assert board.is_full()
     assert board.winner() is None
+
+
+def test_serialize_empty_board() -> None:
+    assert Board.empty().serialize() == "---------"
+
+
+def test_serialize_and_from_string_round_trip() -> None:
+    raw = "X-O-X--O-"
+    board = Board.from_string(raw)
+
+    assert board.serialize() == raw
+    assert board.cell_at(Cell.TOP_LEFT) is Mark.X
+    assert board.cell_at(Cell.TOP_CENTER) is Mark.EMPTY
+    assert board.cell_at(Cell.TOP_RIGHT) is Mark.O
+
+
+def test_from_string_invalid_length_raises() -> None:
+    with pytest.raises(ValueError, match="must have length 9"):
+        Board.from_string("XO")
+
+
+def test_from_string_invalid_char_raises() -> None:
+    with pytest.raises(ValueError, match="Invalid character"):
+        Board.from_string("X-O-?--O-")
+
+
+def test_board_str_formatting() -> None:
+    board = Board.from_string("X-O-X--O-")
+    expected = " X |   | O \n---+---+---\n   | X |   \n---+---+---\n   | O |   "
+    assert str(board) == expected

@@ -22,6 +22,15 @@ class Board:
     def empty(cls) -> "Board":
         return cls((Mark.EMPTY,) * len(Cell))
 
+    @classmethod
+    def from_string(cls, state_str: str) -> "Board":
+        if len(state_str) != len(Cell):
+            raise ValueError(f"State string must have length {len(Cell)}")
+        try:
+            return cls(tuple(Mark(c) for c in state_str))
+        except ValueError as err:
+            raise ValueError(f"Invalid character in state string: {err}") from err
+
     def cell_at(self, cell: Cell) -> Mark:
         return self.cells[cell]
 
@@ -44,3 +53,20 @@ class Board:
             if first == second == third:
                 return Player(first)
         return None
+
+    def serialize(self) -> str:
+        """Return a compact 9-character representation (e.g. 'XO--X--O-')."""
+        return "".join(self.cells)
+
+    def __repr__(self) -> str:
+        return f"Board('{self.serialize()}')"
+
+    def __str__(self) -> str:
+        s = [c.value if c is not Mark.EMPTY else " " for c in self.cells]
+        return (
+            f" {s[0]} | {s[1]} | {s[2]} \n"
+            f"---+---+---\n"
+            f" {s[3]} | {s[4]} | {s[5]} \n"
+            f"---+---+---\n"
+            f" {s[6]} | {s[7]} | {s[8]} "
+        )
