@@ -19,8 +19,29 @@ Activate the environment using your shell or editor, then install dependencies a
 License
 TBD
 
-ToDo:
-- Board.is_full() tests.
-- A game-state model that tracks the current player and validates turn flow.
-- A terminal/log-friendly board formatter.
-- A Game loop that accepts moves from a player interface.
+# ToDo: Mutually Assured Draw
+
+## Phase 1: Core Search & Baseline
+- [ ] Add `Board.available_cells()` helper for move generation.
+- [ ] Implement `RandomPlayer` for baseline automated play and tests.
+- [ ] Define evaluation score types / heuristics (e.g. depth-weighted outcomes).
+- [ ] Implement vanilla recursive `MinimaxPlayer`.
+- [ ] Implement `AlphaBetaPlayer` (with optional transposition caching).
+- [ ] Suite of validation tests:
+  - Solver blocks immediate opponent wins.
+  - Solver takes immediate winning lines.
+  - Minimax vs. Minimax always resolves to `Outcome.DRAW` across both turn orders.
+
+## Phase 2: Statistical & Learning Approaches
+- [ ] Implement **Monte Carlo Tree Search (MCTS)**:
+  - Selection (UCT - Upper Confidence bounds for Trees).
+  - Expansion.
+  - Simulation (rollouts via `RandomPlayer`).
+  - Backpropagation.
+- [ ] Implement **Tabular Q-Learning (Reinforcement Learning)**:
+  - Q-table keyed by board state strings (`Board.serialize()`).
+  - Epsilon-greedy exploration policy during self-play training.
+  - Reward mapping (+1 for win, 0 for draw, -1 for loss).
+- [ ] Arena / Tournament runner:
+  - Pit every agent against one another (Random vs MCTS vs Q-Learning vs Minimax).
+  - Generate win/loss/draw outcome matrices.
