@@ -5,9 +5,17 @@ class Player(StrEnum):
     X = "X"
     O = "O"
 
+    @property
+    def opponent(self) -> "Player":
+        return Player.O if self is Player.X else Player.X
+
+    @property
+    def mark(self) -> "Mark":
+        return Mark.X if self is Player.X else Mark.O
+
 
 class Mark(StrEnum):
-    EMPTY = " "
+    EMPTY = "-"
     X = "X"
     O = "O"
 
@@ -22,3 +30,10 @@ class Cell(IntEnum):
     BOTTOM_LEFT = 6
     BOTTOM_CENTER = 7
     BOTTOM_RIGHT = 8
+
+
+class Outcome(StrEnum):
+    IN_PROGRESS = "IN_PROGRESS"
+    X_WINS = "X_WINS"
+    O_WINS = "O_WINS"
+    DRAW = "DRAW"
