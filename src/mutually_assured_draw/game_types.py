@@ -1,4 +1,7 @@
 from enum import IntEnum, StrEnum
+from typing import NewType
+
+Score = NewType("Score", int)
 
 
 class Player(StrEnum):
