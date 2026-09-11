@@ -2,7 +2,7 @@ from collections.abc import Callable, Mapping
 
 from .game_state import GameState
 from .game_types import Player
-from .player import PlayerInterface
+from .players.base import PlayerInterface
 
 StateObserver = Callable[[GameState], None]
 

@@ -1,7 +1,7 @@
 from typing import Protocol
 
-from .game_state import GameState
-from .game_types import Cell
+from ..game_state import GameState
+from ..game_types import Cell
 
 
 class PlayerInterface(Protocol):
