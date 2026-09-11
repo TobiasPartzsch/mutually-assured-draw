@@ -54,6 +54,10 @@ class Board:
                 return Player(first)
         return None
 
+    @property
+    def available_cells(self) -> list[Cell]:
+        return [cell for cell in Cell if self.cell_at(cell) == Mark.EMPTY]
+
     def serialize(self) -> str:
         """Return a compact 9-character representation (e.g. 'XO--X--O-')."""
         return "".join(self.cells)

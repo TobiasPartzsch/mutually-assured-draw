@@ -94,3 +94,26 @@ def test_board_str_formatting() -> None:
     board = Board.from_string("X-O-X--O-")
     expected = " X |   | O \n---+---+---\n   | X |   \n---+---+---\n   | O |   "
     assert str(board) == expected
+
+
+def test_available_cells_empty_board():
+    board = Board.empty()
+    assert board.available_cells == list(Cell)
+
+
+def test_available_cells_full_board():
+    board = Board.from_string("XOXOXOXOX")
+    assert board.available_cells == []
+
+
+def test_available_cells_partial_board():
+    board = Board.from_string("XO-------")
+    assert board.available_cells == [
+        Cell.TOP_RIGHT,
+        Cell.MIDDLE_LEFT,
+        Cell.MIDDLE_CENTER,
+        Cell.MIDDLE_RIGHT,
+        Cell.BOTTOM_LEFT,
+        Cell.BOTTOM_CENTER,
+        Cell.BOTTOM_RIGHT,
+    ]
