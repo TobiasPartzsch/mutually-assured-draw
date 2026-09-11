@@ -22,9 +22,9 @@ TBD
 # ToDo: Mutually Assured Draw
 
 ## Phase 1: Core Search & Baseline
-- [ ] Add `Board.available_cells()` helper for move generation.
-- [ ] Implement `RandomPlayer` for baseline automated play and tests.
-- [ ] Define evaluation score types / heuristics (e.g. depth-weighted outcomes).
+- [x] Add `Board.available_cells()` helper for move generation.
+- [x] Implement `RandomPlayer` for baseline automated play and tests.
+- [x] Define evaluation score types / heuristics (e.g. depth-weighted outcomes).
 - [ ] Implement vanilla recursive `MinimaxPlayer`.
 - [ ] Implement `AlphaBetaPlayer` (with optional transposition caching).
 - [ ] Suite of validation tests:
