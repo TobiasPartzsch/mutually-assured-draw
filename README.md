@@ -25,7 +25,7 @@ TBD
 - [x] Add `Board.available_cells()` helper for move generation.
 - [x] Implement `RandomPlayer` for baseline automated play and tests.
 - [x] Define evaluation score types / heuristics (e.g. depth-weighted outcomes).
-- [ ] Implement vanilla recursive `MinimaxPlayer`.
+- [x] Implement vanilla recursive `MinimaxPlayer`.
 - [ ] Implement `AlphaBetaPlayer` (with optional transposition caching).
 - [ ] Suite of validation tests:
   - Solver blocks immediate opponent wins.
