@@ -17,6 +17,6 @@ def test_terminal_score_loss_for_perspective():
 
 
 def test_terminal_score_draw():
-    state = GameState(board=Board.from_string("XOXOXOXOX"), current_player=Player.X)
+    state = GameState(board=Board.from_string("OXOXOXXOX"), current_player=Player.X)
     score = terminal_score(state, perspective=Player.X)
     assert score == 0

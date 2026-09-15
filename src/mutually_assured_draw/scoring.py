@@ -1,7 +1,8 @@
 from .game_state import GameState
 from .game_types import Cell, Outcome, Player, Score
 
-WIN_SCORE = len(Cell)
+MAX_DEPTH = len(Cell)
+WIN_SCORE = MAX_DEPTH + 1  # wins need to alway be worth more than draws
 DRAW_SCORE = 0
 
 
@@ -12,7 +13,7 @@ def terminal_score(state: GameState, perspective: Player) -> Score:
         return Score(DRAW_SCORE)
 
     winner = state.board.winner()
-    depth = len(state.board.cells) - len(state.board.available_cells)
+    depth = MAX_DEPTH - len(state.board.available_cells)
     if winner is perspective:
         return Score(WIN_SCORE - depth)
     return Score(-(WIN_SCORE - depth))
