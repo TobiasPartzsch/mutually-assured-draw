@@ -15,12 +15,12 @@ class GameState:
 
     @property
     def outcome(self) -> Outcome:
-        winner = self.board.winner()
+        winner = self.board.winner
         if winner is Player.X:
             return Outcome.X_WINS
         if winner is Player.O:
             return Outcome.O_WINS
-        if self.board.is_full():
+        if self.board.is_full:
             return Outcome.DRAW
         return Outcome.IN_PROGRESS
 

@@ -42,9 +42,11 @@ class Board:
         updated_cells[cell] = Mark(player)
         return Board(tuple(updated_cells))
 
+    @property
     def is_full(self) -> bool:
         return Mark.EMPTY not in self.cells
 
+    @property
     def winner(self) -> Player | None:
         for winning_line in WINNING_LINES:
             first, second, third = (self.cell_at(cell) for cell in winning_line)

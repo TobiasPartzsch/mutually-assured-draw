@@ -12,7 +12,7 @@ def terminal_score(state: GameState, perspective: Player) -> Score:
     if state.outcome is Outcome.DRAW:
         return Score(DRAW_SCORE)
 
-    winner = state.board.winner()
+    winner = state.board.winner
     depth = MAX_DEPTH - len(state.board.available_cells)
     if winner is perspective:
         return Score(WIN_SCORE - depth)
