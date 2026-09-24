@@ -26,8 +26,8 @@ TBD
 - [x] Implement `RandomPlayer` for baseline automated play and tests.
 - [x] Define evaluation score types / heuristics (e.g. depth-weighted outcomes).
 - [x] Implement vanilla recursive `MinimaxPlayer`.
-- [ ] Implement `AlphaBetaPlayer` (with optional transposition caching).
-- [ ] Suite of validation tests:
+- [x] Implement `AlphaBetaPlayer` (no transposition caching because it adds complexity without too much benefit).
+- [x] Suite of validation tests:
   - Solver blocks immediate opponent wins.
   - Solver takes immediate winning lines.
   - Minimax vs. Minimax always resolves to `Outcome.DRAW` across both turn orders.
