@@ -25,14 +25,12 @@ def test_select_move_to_block_win():
 
 
 def test_select_move_to_block_win_as_O():
-    print("block as O start")
     board = Board.from_string("OXOXO-X-X")
 
     state = GameState(board=board, current_player=Player.O)
     player = MinimaxPlayer()
 
-    move = player.select_move(state, verbose=True)
-    print("block as O end")
+    move = player.select_move(state)
 
     assert move == Cell.BOTTOM_CENTER
 
@@ -73,16 +71,11 @@ def test_game_always_ends_in_draw_regardless_where_x_starts():
     for i in range(len(Cell)):
         new = pattern[:]
         new[i] = "X"
-        print(new)
         board = Board.from_string("".join(new))
         state = GameState(board=board, current_player=Player.O)
         player = MinimaxPlayer()
         while not state.is_over:
             move = player.select_move(state)
-            print(f"Player {state.current_player} moves {move}")
             state = state.make_move(move)
 
-        if state.outcome != Outcome.DRAW:
-            print("strange board")
-            print(str(state.board))
         assert state.outcome == Outcome.DRAW
