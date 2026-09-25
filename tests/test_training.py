@@ -6,8 +6,12 @@ import pytest
 from mutually_assured_draw.board import Board
 from mutually_assured_draw.game_state import GameState
 from mutually_assured_draw.game_types import Cell, Player
-from mutually_assured_draw.players.q_learning_player import QLearningPlayer
-from training import reward_for_transition, train_against_opponent, train_self_play
+from mutually_assured_draw.players import QLearningPlayer
+from mutually_assured_draw.training import (
+    reward_for_transition,
+    train_against_opponent,
+    train_self_play,
+)
 
 
 @dataclass(frozen=True)
