@@ -69,6 +69,9 @@ class QLearningPlayer:
                 self.q_table.get((next_state_key, next_action), 0.0)
                 for next_action in next_state.board.available_cells
             )
-            target = reward - self.discount_factor * best_next_value
+            if next_state.current_player is state.current_player:
+                target = reward + self.discount_factor * best_next_value
+            else:
+                target = reward - self.discount_factor * best_next_value
 
         self.q_table[q_key] = old_value + self.learning_rate * (target - old_value)
