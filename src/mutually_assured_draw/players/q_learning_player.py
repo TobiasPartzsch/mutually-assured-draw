@@ -3,8 +3,7 @@ from dataclasses import dataclass, field
 from typing import TypeAlias
 
 from mutually_assured_draw.game_state import GameState
-
-from ..game_types import Cell
+from mutually_assured_draw.game_types import Cell
 
 StateKey: TypeAlias = str
 QValue: TypeAlias = float

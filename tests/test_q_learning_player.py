@@ -5,7 +5,7 @@ import pytest
 from mutually_assured_draw.board import Board
 from mutually_assured_draw.game_state import GameState
 from mutually_assured_draw.game_types import Cell, Player
-from mutually_assured_draw.players.q_learning_player import QLearningPlayer
+from mutually_assured_draw.players import QLearningPlayer
 
 
 def test_select_move_with_single_available_cell():

@@ -5,7 +5,7 @@ import pytest
 from mutually_assured_draw.board import Board
 from mutually_assured_draw.game_state import GameState
 from mutually_assured_draw.game_types import Cell, Player
-from mutually_assured_draw.players.random_player import RandomPlayer
+from mutually_assured_draw.players import RandomPlayer
 
 
 def test_select_move_is_deterministic_with_seed():

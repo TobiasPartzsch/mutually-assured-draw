@@ -1,7 +1,7 @@
 from mutually_assured_draw.board import Board
 from mutually_assured_draw.game_state import GameState
 from mutually_assured_draw.game_types import Cell, Outcome, Player
-from mutually_assured_draw.players.minimax_player import MinimaxPlayer
+from mutually_assured_draw.players import MinimaxPlayer
 
 
 def test_select_move_with_single_available_cell():
