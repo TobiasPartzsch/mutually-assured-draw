@@ -83,3 +83,31 @@ def test_play_game_already_terminal_state() -> None:
     assert final_state == terminal_state
     assert final_state.outcome is Outcome.X_WINS
     assert len(observed) == 1
+
+
+def test_play_game_notifies_move_observer() -> None:
+    player_x = ScriptedPlayer([Cell.TOP_LEFT, Cell.TOP_CENTER, Cell.TOP_RIGHT])
+    player_o = ScriptedPlayer([Cell.MIDDLE_LEFT, Cell.MIDDLE_CENTER])
+
+    observed_moves: list[tuple[GameState, Cell]] = []
+
+    final_state = play_game(
+        players={Player.X: player_x, Player.O: player_o},
+        move_observer=lambda state, move: observed_moves.append((state, move)),
+    )
+
+    assert final_state.outcome is Outcome.X_WINS
+    assert [move for _, move in observed_moves] == [
+        Cell.TOP_LEFT,
+        Cell.MIDDLE_LEFT,
+        Cell.TOP_CENTER,
+        Cell.MIDDLE_CENTER,
+        Cell.TOP_RIGHT,
+    ]
+    assert [state.current_player for state, _ in observed_moves] == [
+        Player.X,
+        Player.O,
+        Player.X,
+        Player.O,
+        Player.X,
+    ]
